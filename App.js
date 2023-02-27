@@ -56,11 +56,19 @@ const getProfile = async () => {
   }
 };
 
+const saveUserProfile = (user) => {
+        setUserProfile(user);
+        setHasProfile(true);
+}
+
+const saveprofile = (user) => {
+  storeProfile(user);
+}
 
 
 
-  return (
-  <Context.Provider value = {{ profile: userProfile, setProfile: setUserProfile, storeData: storeProfile}}>
+  return(
+  <Context.Provider value = {{ profile: userProfile, setProfile: saveUserProfile, storeData:saveprofile}}>
       <NavigationContainer>
         <Stack.Navigator>
             { 
