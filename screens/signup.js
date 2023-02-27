@@ -6,7 +6,7 @@ import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import Context from './context';
 
 
-export const SignUp = () => {
+export const SignUp = ( {navigation}) => {
     const value = useContext(Context)
 
 

@@ -21,12 +21,12 @@ useEffect(() => {
   async function restoreProfile(){
     let permInfo;
     permInfo = await getProfile();
-
+    console.log(permInfo)
     if(permInfo === null || permInfo === {}) {
      permInfo = {FName: '', LName: '',Email:'', Password: ''};
      setHasProfile(false);
      setUserProfile(permInfo);
-     
+    
     } else{
         setHasProfile(true);
         setUserProfile(permInfo);
@@ -34,7 +34,7 @@ useEffect(() => {
   }
 }
   restoreProfile();
-}, [userProfile]);
+}, []);
 
 
 const storeProfile = async (value) => {
@@ -65,7 +65,8 @@ const getProfile = async () => {
         <Stack.Navigator>
             { 
               hasProfile ? (
-                <Stack.Screen name="Signup" component={Welcome}/>
+                <Stack.Screen name="Welcome" component={Welcome}/>
+                
               ) :(
                 <Stack.Screen name="Signup" component={SignUp}/>
               )
