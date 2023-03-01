@@ -10,7 +10,7 @@ export const Welcome = ({navigation }) => {
 
   return (
     <View>
-        <Text> welcome {value.profile.FName} </Text>
+        <Text> Welcome {value.profile.FName} {value.profile.LName} {value.profile.Email} {value.profile.Password} </Text>
     </View>
 
   

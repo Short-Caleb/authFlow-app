@@ -1,6 +1,11 @@
 import { useState, useEffect, createContext, useContext } from 'react';
 
-const Context = createContext({fName: null, setProfile: null, storeData: null});
+const Context = createContext(
+    {
+        profile: null,
+         setProfile: (user) => {} ,
+          storeData: (user) => {}
+        });
 
 export default Context
 

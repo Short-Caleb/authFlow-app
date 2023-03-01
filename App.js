@@ -40,7 +40,7 @@ useEffect(() => {
 const storeProfile = async (value) => {
   try {
     const jsonValue = JSON.stringify(value)
-    await AsyncStorage.setItem('@storage_Key', jsonValue)
+    await AsyncStorage.setItem('@storage_Keycal1', jsonValue)
   } catch (e) {
     // saving error
   }
@@ -49,7 +49,7 @@ const storeProfile = async (value) => {
 
 const getProfile = async () => {
   try {
-    const jsonValue = await AsyncStorage.getItem('@storage_Key')
+    const jsonValue = await AsyncStorage.getItem('@storage_Key_cal1')
     return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch(e) {
     // error reading value
@@ -57,12 +57,14 @@ const getProfile = async () => {
 };
 
 const saveUserProfile = (user) => {
-        setUserProfile(user);
-        setHasProfile(true);
+     console.log('In saveUserProfile the user parameter is ');
+     console.log(user)
+      setUserProfile(user, storeProfile(userProfile));
+      setHasProfile(true);
 }
 
 const saveprofile = (user) => {
-  storeProfile(user);
+  storeProfile(userProfile);
 }
 
 
@@ -73,7 +75,7 @@ const saveprofile = (user) => {
         <Stack.Navigator>
             { 
               hasProfile ? (
-                <Stack.Screen name="Welcome" component={Welcome}/>
+                <Stack.Screen name="Welcome" component={Welcome} />
                 
               ) :(
                 <Stack.Screen name="Signup" component={SignUp}/>

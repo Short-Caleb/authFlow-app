@@ -6,20 +6,38 @@ import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import Context from './context';
 
 
-export const SignUp = ( {navigation}) => {
+export const SignUp = ( {navigation, route}) => {
     const value = useContext(Context)
 
 
-    const [fName, setFname] = useState('');
-    const [lName, setLName] = useState('');
+    const [fname, setFname] = useState('');
+    const [lname, setLname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const addprofile = ( ) => { 
         console.log('adding profile...')
-        value.setProfile({FName: fName, LName: lName, Email: email, Password: password})
-        value.storeData({FName: fName, LName: lName, Email: email, Password: password})
-    }   
+        console.log(fname, lname, email, password)
+        value.setProfile({FName: fname, LName: lname, Email: email, Password: password})
+       // value.storeData({FName: fName, LName: lName, Email: email, Password: password})
+      
+      }   
+        //how it is done for a react web-app 
+      // const fnameChange = (e) => {
+      //   setFname(e.target.value)
+      // }
+
+      // const lnameChange = (e) => {
+      //   setLname(e.target.value)
+      // }
+
+      // const emailChange = (e) => {
+      //   setEmail(e.target.value)
+      // }
+
+      // const passwordChange = (e) => {
+      //   setPassword(e.target.value)
+      // }
 
   return (
     <View>
@@ -27,29 +45,29 @@ export const SignUp = ( {navigation}) => {
         <Text>First Name</Text>
         <TextInput 
         editable
-        value={fName}
-        onChange={setFname}
+        value={fname}
+        onChangeText={setFname}
         />
 
         <Text>Last Name</Text>
         <TextInput 
         editable
-        value={lName}
-        onChange={setLName}
+        value={lname}
+        onChangeText={setLname}
         />
 
         <Text>Email</Text>
         <TextInput 
         editable
         value={email}
-        onChange={setEmail}
+        onChangeText={setEmail}
         />
 
         <Text>Password</Text>
         <TextInput 
         editable
         value={password}
-        onChange={setPassword}
+        onChangeText={setPassword}
         />
         <Button title='Create Account' onPress={addprofile} />
     </View>
