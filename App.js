@@ -34,13 +34,13 @@ useEffect(() => {
   }
 }
   restoreProfile();
-}, []);
+}, [hasProfile]);
 
 
 const storeProfile = async (value) => {
   try {
     const jsonValue = JSON.stringify(value)
-    await AsyncStorage.setItem('@storage_Keycal1', jsonValue)
+    await AsyncStorage.setItem('@storage_Key_cal8', jsonValue)
   } catch (e) {
     // saving error
   }
@@ -49,7 +49,7 @@ const storeProfile = async (value) => {
 
 const getProfile = async () => {
   try {
-    const jsonValue = await AsyncStorage.getItem('@storage_Key_cal1')
+    const jsonValue = await AsyncStorage.getItem('@storage_Key_cal8')
     return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch(e) {
     // error reading value
@@ -59,18 +59,26 @@ const getProfile = async () => {
 const saveUserProfile = (user) => {
      console.log('In saveUserProfile the user parameter is ');
      console.log(user)
-      setUserProfile(user, storeProfile(userProfile));
+      setUserProfile(user);
+      storeProfile(user)
       setHasProfile(true);
 }
 
-const saveprofile = (user) => {
+const saveProfile = (user) => {
+  console.log('actually saving data')
   storeProfile(userProfile);
 }
 
 
+const logOut = ( ) => {
+  console.log('logging out')
+  setHasProfile(false);
+  setUserProfile({});
+}
+
 
   return(
-  <Context.Provider value = {{ profile: userProfile, setProfile: saveUserProfile, storeData:saveprofile}}>
+  <Context.Provider value = {{ profile: userProfile, setProfile: saveUserProfile, storeData: saveProfile, Logout: logOut}}>
       <NavigationContainer>
         <Stack.Navigator>
             { 
